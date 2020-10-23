@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: discovery
+  freemarker:
+    template-loader-path: classpath:/templates/
+    prefer-file-system-access: false
+server:
+  port: ${PORT:8761}
+eureka:
+  instance:
+    hostname: localhost
+    lease-renewal-interval-in-seconds: 15
+    lease-expiration-duration-in-seconds: 15
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
+    expected-client-renewal-interval-seconds: 15
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 30000
